@@ -40,8 +40,8 @@ public class QuestionController {
     }
 
     //get quiz wise questions
-    @GetMapping("/quiz/{qid}")
-    public ResponseEntity<?> getAllQuestionsOfQuiz(@PathVariable("qid") Long qid)
+    @GetMapping("/all/quiz/{quizId}")
+    public ResponseEntity<?> getAllQuestionsOfQuiz(@PathVariable("quizId") Long qid)
     {
         Quiz quiz=this.quizService.getQuiz(qid);
         Set<Question> questions=quiz.getQuestions();
@@ -57,11 +57,10 @@ public class QuestionController {
     }
 
 
-    @GetMapping("/quiz/all/{qid}")
-    public ResponseEntity<?> getAllQuestionsOfQuizAdmin(@PathVariable("qid") Long qid)
+    @GetMapping("/quiz/admin/all/{quizId}")
+    public ResponseEntity<?> getAllQuestionsOfQuizAdmin(@PathVariable("quizId") Long qid)
     {
-      Quiz quiz=new Quiz();
-      quiz.setQid(qid);
+    	 Quiz quiz=this.quizService.getQuiz(qid);
       Set<Question>list=this.questionService.getQuestionOfQuiz(quiz);
 
         return ResponseEntity.ok(list);
@@ -69,14 +68,14 @@ public class QuestionController {
 
     
     //get a single question
-    @GetMapping("/{qid}")
-    public Question getQuestion(@PathVariable("qid") Long qid)
+    @GetMapping("/{questionId}")
+    public Question getQuestion(@PathVariable("questionId") Long qid)
     {
         return this.questionService.getQuestion(qid);
     }
     //delete a single question
-    @DeleteMapping("{qid}")
-    public void deleteQuestion(@PathVariable("qid") Long qid)
+    @DeleteMapping("{questionId}")
+    public void deleteQuestion(@PathVariable("questionId") Long qid)
     {
         this.questionService.deleteQuestion(qid);
     }

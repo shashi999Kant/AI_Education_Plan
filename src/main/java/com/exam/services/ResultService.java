@@ -3,6 +3,7 @@ package com.exam.services;
 import java.util.List;
 
 import com.exam.model.User;
+import com.exam.model.exams.Category;
 import com.exam.model.exams.Quiz;
 import com.exam.model.exams.Result;
 
@@ -13,5 +14,7 @@ public interface ResultService {
 	public List<Result> getResultOfQuiz(Quiz quiz);
 	public List<Result> getResultOfUser(User user);
 	public List<Result> getResultOfUserAndQuiz(Quiz quiz,User user);
+	public List<Result> getResultOfUserAndCategory(Category category,User user);
+	
 
 }

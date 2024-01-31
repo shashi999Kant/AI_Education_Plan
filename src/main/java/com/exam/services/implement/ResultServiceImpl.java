@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exam.model.User;
+import com.exam.model.exams.Category;
 import com.exam.model.exams.Quiz;
 import com.exam.model.exams.Result;
 import com.exam.repo.ResultRepository;
@@ -44,6 +45,12 @@ public class ResultServiceImpl implements ResultService {
 	public List<Result> getResultOfUserAndQuiz(Quiz quiz, User user) {
 		// TODO Auto-generated method stub
 		return this.resultrepository.findByQuizAndUser(quiz,user);
+	}
+
+	@Override
+	public List<Result> getResultOfUserAndCategory(Category category, User user) {
+		// TODO Auto-generated method stub
+		return this.resultrepository.findByUserAndQuiz_Category(user, category);
 	}
 
 }

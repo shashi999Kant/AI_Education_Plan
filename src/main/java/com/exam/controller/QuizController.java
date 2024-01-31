@@ -44,26 +44,25 @@ public class QuizController {
     }
 
     //get single quiz	
-    @GetMapping("{qid}")
-    public Quiz getSingleQuiz(@PathVariable("qid") Long qid)
+    @GetMapping("{quizId}")
+    public Quiz getSingleQuiz(@PathVariable("quizId") Long qid)
     {
     	System.out.println("Geettting single quiz");
         return this.quizService.getQuiz(qid);
     }
     //delete Quiz
-    @DeleteMapping("/{qid}")
-    public void deleteQuiz(@PathVariable("qid") Long qid)
+    @DeleteMapping("/{quizId}")
+    public void deleteQuiz(@PathVariable("quizId") Long qid)
     {
         System.out.println("Delteing quiz"+qid);
         this.quizService.deleteQuiz(qid);
     }
     
     //get quiz of particular category
-    @GetMapping("/category/{cid}")
-    public List<Quiz> getQuizOfCategory(@PathVariable("cid") Long cid)
+    @GetMapping("/category/{categoryId}")
+    public List<Quiz> getQuizOfCategory(@PathVariable("categoryId") Long cid) throws Exception
     {
-    	Category cat=new Category();
-    	cat.setCid(cid);
+    	Category cat = this.categoryService.getCategory(cid);
     	return (this.quizService.getQuizzesOfCategory(cat));
     	
     }

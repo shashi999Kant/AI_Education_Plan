@@ -69,6 +69,7 @@ public class Result {
 		return qAttempted;
 	}
 
+
 	public void setqAttempted(int qAttempted) {
 		this.qAttempted = qAttempted;
 	}
@@ -89,7 +90,9 @@ public class Result {
 		this.marksScored = marksScored;
 	}
 
-	public Result(int result_id, Quiz quiz, User user, int qAttempted, int correctAns, double marksScored) {
+	
+	public Result(int result_id, Quiz quiz, User user, int qAttempted, int correctAns, double marksScored,
+			String submitDateTime) {
 		super();
 		this.result_id = result_id;
 		this.quiz = quiz;
@@ -97,6 +100,7 @@ public class Result {
 		this.qAttempted = qAttempted;
 		this.correctAns = correctAns;
 		this.marksScored = marksScored;
+		this.submitDateTime = submitDateTime;
 	}
 
 	public Result() {
